@@ -17,6 +17,7 @@
 
 use std::sync::Arc;
 
+use super::replay::ClonedBody;
 use crate::{
     cluster::{directory::StaticDirectory, Cluster, Directory, MockCluster, MockDirectory},
     codegen::{RegistryDirectory, RpcInvocation, TripleInvoker},
@@ -24,8 +25,6 @@ use crate::{
     utils::boxed_clone::BoxCloneService,
 };
 use dubbo_base::Url;
-use super::replay::ClonedBody;
-
 
 pub type ClientBoxService =
     BoxCloneService<http::Request<ClonedBody>, http::Response<crate::BoxBody>, crate::Error>;

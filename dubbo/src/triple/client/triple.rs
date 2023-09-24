@@ -21,8 +21,7 @@ use futures_util::{future, stream, StreamExt, TryStreamExt};
 
 use http::HeaderValue;
 
-use super::builder::ClientBuilder;
-use super::replay::ClonedBody;
+use super::{builder::ClientBuilder, replay::ClonedBody};
 use crate::codegen::RpcInvocation;
 
 use crate::{
@@ -149,12 +148,7 @@ impl TripleClient {
         .into_stream();
         let body = ClonedBody::new(en);
 
-        let mut conn = self
-            .builder
-            .clone()
-            .unwrap()
-            .build()
-            .unwrap();
+        let mut conn = self.builder.clone().unwrap().build().unwrap();
 
         let http_uri = http::Uri::from_str(&conn.get_url().to_url()).unwrap();
         let req = self.map_request(http_uri.clone(), path, body, invocation);
@@ -212,15 +206,9 @@ impl TripleClient {
         )
         .into_stream();
 
-
         let body = ClonedBody::new(en);
 
-        let mut conn = self
-            .builder
-            .clone()
-            .unwrap()
-            .build()
-            .unwrap();
+        let mut conn = self.builder.clone().unwrap().build().unwrap();
 
         let http_uri = http::Uri::from_str(&conn.get_url().to_url()).unwrap();
         let req = self.map_request(http_uri.clone(), path, body, invocation);
@@ -263,12 +251,7 @@ impl TripleClient {
         .into_stream();
         let body = ClonedBody::new(en);
 
-        let mut conn = self
-            .builder
-            .clone()
-            .unwrap()
-            .build()
-            .unwrap();
+        let mut conn = self.builder.clone().unwrap().build().unwrap();
 
         let http_uri = http::Uri::from_str(&conn.get_url().to_url()).unwrap();
         let req = self.map_request(http_uri.clone(), path, body, invocation);
@@ -329,12 +312,7 @@ impl TripleClient {
 
         let body = ClonedBody::new(en);
 
-        let mut conn = self
-            .builder
-            .clone()
-            .unwrap()
-            .build()
-            .unwrap();
+        let mut conn = self.builder.clone().unwrap().build().unwrap();
 
         let http_uri = http::Uri::from_str(&conn.get_url().to_url()).unwrap();
         let req = self.map_request(http_uri.clone(), path, body, invocation);
